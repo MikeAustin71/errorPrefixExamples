@@ -188,7 +188,7 @@ func (tFuncAlpha06 *testFuncDtoAlpha06) tx6GiveUp(
 	if returnError {
 		err = fmt.Errorf(
 			"%v\n"+
-				"An Error Ocurred! Something bad.\n"+
+				"Error= An Error Ocurred! Something bad.\n"+
 				"Like Divide by Zero!\n",
 			ePrefix.String())
 	}

@@ -26,12 +26,19 @@ type TestFuncDtoCharlie01 struct {
 }
 
 func (tFuncDtoCharlie01 *TestFuncDtoCharlie01) Tx1DoStuff(
-	ePrefix *erPref.ErrPrefixDto) error {
+	errorPrefix interface{}) error {
 
-	if ePrefix == nil {
-		ePrefix = erPref.ErrPrefixDto{}.Ptr()
-	} else {
-		ePrefix = ePrefix.CopyPtr()
+	var ePrefix *erPref.ErrPrefixDto
+	var err error
+
+	ePrefix,
+		err = erPref.ErrPrefixDto{}.NewIEmpty(
+		errorPrefix,
+		"TestFuncDtoAlpha01.Tx1DoSomething()",
+		"")
+
+	if err != nil {
+		return err
 	}
 
 	ePrefix.SetEPrefCtx(
@@ -157,8 +164,10 @@ func (tFuncCharlie06 *testFuncDtoCharlie06) Tx6DoSpaceStuff(
 	ePrefix.SetEPrefCtx(
 		"testFuncDtoCharlie06."+
 			"Tx6DoSpaceStuff()",
-		"Error: Asteroid Collision!")
+		"Error Context: Asteroid Collision!")
 
-	return fmt.Errorf("%v\n",
-		ePrefix.String())
+	return fmt.Errorf("%v\n"+
+		"Error= %v",
+		ePrefix.String(),
+		"Real bad error! Something hit the space ship!\n")
 }

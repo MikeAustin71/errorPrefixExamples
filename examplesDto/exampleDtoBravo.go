@@ -28,12 +28,18 @@ type TestFuncDtoBravo01 struct {
 
 func (tFuncDtoBravo01 *TestFuncDtoBravo01) Tx1DoSomethingSpecial(
 	returnError bool,
-	ePrefix *erPref.ErrPrefixDto) error {
+	errorPrefix interface{}) error {
+	var ePrefix *erPref.ErrPrefixDto
+	var err error
 
-	if ePrefix == nil {
-		ePrefix = erPref.ErrPrefixDto{}.Ptr()
-	} else {
-		ePrefix = ePrefix.CopyPtr()
+	ePrefix,
+		err = erPref.ErrPrefixDto{}.NewIEmpty(
+		errorPrefix,
+		"TestFuncDtoAlpha01.Tx1DoSomething()",
+		"")
+
+	if err != nil {
+		return err
 	}
 
 	ePrefix.SetEPref(
@@ -181,8 +187,8 @@ func (tFuncY6 *testFuncDtoBravo06) tx6GiveUp(
 
 	if returnError {
 		err = fmt.Errorf("%v\n"+
-			"An Error Ocurred! Something Bad...\n"+
-			"Maybe its Divide By Zero!\n",
+			"Error= An Error Ocurred! Something Bad...\n"+
+			"Maybe it is Divide By Zero!\n",
 			ePrefix.String())
 	}
 
