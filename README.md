@@ -51,7 +51,6 @@ To use ***errpref***  in your code, you will need to import the software package
 ```go
 
 import (
- "fmt"
 
  erPref "github.com/MikeAustin71/errpref"
 )
