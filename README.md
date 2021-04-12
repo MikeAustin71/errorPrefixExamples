@@ -1,12 +1,121 @@
 # Error Prefix Examples
 
-This application provides usage examples for the ***errpref*** package.  The source code repository for the ***errpref*** package is located at:  https://github.com/MikeAustin71/errprefops
+**errorPrefixExamples** - This application provides usage examples for the ***errpref*** software package. 
 
-The ***errpref*** package is written in the **Go** programming language (a.k.a ***Golang***).
+***errpref***  stands for **Error Prefix**.  The ***errpref*** package provides lightweight ***GoLang*** types designed to create and attach error prefix text, function chain lists and error context strings to error messages returned by ***Go*** functions.
 
-Feel free to clone this ***errpref*** repository and review the code examples. 
+The source code repository for the ***errpref*** package is located at  https://github.com/MikeAustin71/errpref. Source code documentation is maintained at [errpref · pkg.go.dev](https://pkg.go.dev/github.com/MikeAustin71/errpref).
 
-All the test functions are located in *testFunctions/testFunctionsDto.go* and *testFunctions/testFunctionsStrings.go*. They can be called from source code file **main.go** located at *app/main.go*
+The ***errpref*** package is written in the [The Go Programming Language (golang.org)](https://golang.org/) (a.k.a ***Golang***).
+
+The source code for the **errorPrefixExamples** is located in the software repository at https://github.com/MikeAustin71/errorPrefixExamples .
+
+
+
+## Purpose
+
+The goal of this example code is to assist developers in quickly integrating the ***errpref*** package into their software projects. Feel free to clone this **errorPrefixExamples** repository and review the code examples. 
+
+
+
+## Setup, Configuration And Import
+
+
+
+### A Good Place To Start
+
+If you have not done so, it is recommended that you first review the source code documentation for [errpref](https://pkg.go.dev/github.com/MikeAustin71/errpref).
+
+
+
+### Setup and Configuration
+
+The **errorPrefixExamples** application is designed to work with [***Go*** Modules](https://golang.org/ref/mod). This application therefore includes a **go.mod** file. A review of the go.mod file, located in the base **errorPrefixExamples** directory, will show the ***errpref*** package configured for the latest version.
+
+```go
+
+module github.com/MikeAustin71/errorPrefixExamples
+
+go 1.16
+
+require github.com/MikeAustin71/errpref v1.5.2
+
+```
+
+
+
+### Import
+
+To use ***errpref***  in your code, you will need to import the software package ***github.com/MikeAustin71/errpref***.
+
+```go
+
+import (
+ "fmt"
+
+ erPref "github.com/MikeAustin71/errpref"
+)
+
+```
+
+The **errorPrefixExamples** application has already included in the necessary ***import*** statements.
+
+
+
+### Troubleshooting *errpref* Package Setup
+
+If problems are encountered configuring the ***errpref*** package, try the following:
+
+1. From the command line run: 
+
+   ```text
+   go get github.com/MikeAustin71/errpref@v1.5.2 
+   
+   				or 
+   
+   go get github.com/MikeAustin71/errpref@latest
+   ```
+
+2. If problems continue, as a last resort, try clearing your cache:
+
+   ```text
+   go clean -modcache
+   
+   Re-Execute the 'go get' command in item No. 1 above.
+   ```
+
+   Be advised, the command will delete all modules in your cache. 
+
+   
+
+## Executing Example Code
+
+### Background
+
+All the test functions are located in ***testFunctions/testFunctionsDto.go*** and ***testFunctions/testFunctionsStrings.go***. They are designed to be called from source code file ***app/main.go***. 
+
+The best usage examples are located at:
+
+***examplesDto/exampleDtoAlpha.go***
+
+***examplesDto/exampleDtoBravo.go***
+
+***examplesDto/exampleDtoCharlie.go***
+
+
+
+### *main.go*
+
+1. First configure ***app/main.go*** to call the desired test function in in ***testFunctions/testFunctionsDto.go*** or ***testFunctions/testFunctionsStrings.go***.
+2. From the command line in directory ***errorPrefixExamples\app***, issue the command **go run main.go**. Test results will then be displayed in the command line interface. 
+
+
+
+## Version
+
+The latest version of the **errorPrefixExamples** application is Version 1.5.2.  This corresponds to the version number of the latest version of the ***errpref*** software package.
+
+
 
 ## License
 
@@ -14,6 +123,8 @@ Use of this source code is governed by the (open-source) MIT-style license which
 located in this directory.
 
 [MIT License](./LICENSE)
+
+
 
 ## Comments And Questions
 

@@ -3,7 +3,7 @@ package testFunctions
 import (
 	"fmt"
 	exDto "github.com/MikeAustin71/errorPrefixExamples/examplesDto"
-	erPref "github.com/MikeAustin71/errprefops/errpref"
+	erPref "github.com/MikeAustin71/errpref"
 )
 
 type TestFuncsDto struct{}

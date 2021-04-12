@@ -3,14 +3,14 @@ package examplesDto
 import (
 	"fmt"
 
-	erPref "github.com/MikeAustin71/errprefops/errpref"
+	erPref "github.com/MikeAustin71/errpref"
 )
 
 // TestFuncDtoAlpha01 - This type is designed to call a series
 // of methods using Error Prefix Data Transfer Objects otherwise
 // known as 'ErrPrefixDto'.  For source code documentation on this
 // type, reference:
-//  https://pkg.go.dev/github.com/MikeAustin71/errprefops/errpref#ErrPrefixDto
+//  https://pkg.go.dev/github.com/MikeAustin71/errpref#ErrPrefixDto
 //
 // This method chain will return an error on the last function
 // call, if, and only if, parameter, 'returnError' is set to 'true'.
@@ -24,7 +24,7 @@ import (
 //
 // For source code documentation on the 'ErrPrefixDto' type,
 // reference:
-//  https://pkg.go.dev/github.com/MikeAustin71/errprefops/errpref#ErrPrefixDto
+//  https://pkg.go.dev/github.com/MikeAustin71/errpref#ErrPrefixDto
 //
 type TestFuncDtoAlpha01 struct {
 	input string
