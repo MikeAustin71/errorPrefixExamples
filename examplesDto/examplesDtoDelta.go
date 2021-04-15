@@ -35,7 +35,7 @@ func (tFuncDtoDelta01 *TestFuncDtoDelta01) Tx1DoGreatThings(
 	ePrefix,
 		err = erPref.ErrPrefixDto{}.NewIEmpty(
 		errorPrefix,
-		"TestFuncDtoAlpha01.Tx1DoGreatThings()",
+		"TestFuncDtoDelta01.Tx1DoGreatThings()",
 		"X->Y")
 
 	if err != nil {
