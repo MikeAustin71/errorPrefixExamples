@@ -2,62 +2,58 @@ package examplesDto
 
 import (
 	"fmt"
-
 	erPref "github.com/MikeAustin71/errpref"
 )
 
-// TestFuncDtoBravo01 - This type is designed to call a series
+// TestFuncDtoDelta01 - This type is designed to call a series
 // of methods using Error Prefix Data Transfer Objects otherwise
 // known as 'ErrPrefixDto'. For source code documentation on this
 // type, reference:
 //  https://pkg.go.dev/github.com/MikeAustin71/errpref#ErrPrefixDto
 //
-// This method chain will return an error on the last function
-// call, if, and only if, parameter, 'returnError' is set to 'true'.
+// This method chain will always return an error on the last function
+// call.
 //
 // The entry point for this method chain is:
-//    TestFuncBravo01.Tx1DoSomethingSpecial()
+//    TestFuncDtoDelta01.Tx1DoGreatThings()
 //
 // These examples showcase the 'ErrPrefixDto' type and the use of
 // an empty interface to initialize a new instance of
 // 'ErrPrefixDto'.
 //
-type TestFuncDtoBravo01 struct {
+type TestFuncDtoDelta01 struct {
 	input string
 }
 
-func (tFuncDtoBravo01 *TestFuncDtoBravo01) Tx1DoSomethingSpecial(
+func (tFuncDtoDelta01 *TestFuncDtoDelta01) Tx1DoGreatThings(
 	returnError bool,
 	errorPrefix interface{}) error {
+
 	var ePrefix *erPref.ErrPrefixDto
 	var err error
 
 	ePrefix,
 		err = erPref.ErrPrefixDto{}.NewIEmpty(
 		errorPrefix,
-		"TestFuncDtoAlpha01.Tx1DoSomething()",
-		"")
+		"TestFuncDtoAlpha01.Tx1DoGreatThings()",
+		"X->Y")
 
 	if err != nil {
 		return err
 	}
 
-	ePrefix.SetEPref(
-		"TestFuncDtoBravo01." +
-			"Tx1DoSomethingSpecial()")
+	tFuncDelta02 := testFuncDtoDelta02{}
 
-	tFuncBravo02 := testFuncDtoBravo02{}
-
-	return tFuncBravo02.tx2DoSomethingElse(
+	return tFuncDelta02.Tx2DoSomeThings(
 		returnError,
 		ePrefix)
 }
 
-type testFuncDtoBravo02 struct {
+type testFuncDtoDelta02 struct {
 	input string
 }
 
-func (tFuncBravo02 *testFuncDtoBravo02) tx2DoSomethingElse(
+func (tFuncDelta02 *testFuncDtoDelta02) Tx2DoSomeThings(
 	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
@@ -68,23 +64,22 @@ func (tFuncBravo02 *testFuncDtoBravo02) tx2DoSomethingElse(
 	}
 
 	ePrefix.SetEPref(
-		"testFuncDtoBravo02." +
-			"tx2DoSomethingElse()")
+		"testFuncDtoDelta02." +
+			"Tx2DoSomeThings()")
 
-	tFuncBravo03 := testFuncDtoBravo03{}
+	tFuncDelta03 := testFuncDtoDelta03{}
 
-	err := tFuncBravo03.tx3DoAnything(
+	return tFuncDelta03.Tx3DoFewerThings(
 		returnError,
-		ePrefix)
-
-	return err
+		ePrefix.XCtx(
+			"B->C"))
 }
 
-type testFuncDtoBravo03 struct {
+type testFuncDtoDelta03 struct {
 	input string
 }
 
-func (tFuncBravo03 *testFuncDtoBravo03) tx3DoAnything(
+func (tFuncDelta03 *testFuncDtoDelta03) Tx3DoFewerThings(
 	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
@@ -95,23 +90,21 @@ func (tFuncBravo03 *testFuncDtoBravo03) tx3DoAnything(
 	}
 
 	ePrefix.SetEPref(
-		"testFuncDtoBravo03." +
-			"tx3DoAnything()")
+		"testFuncDtoDelta03." +
+			"Tx3DoFewerThings()")
 
-	tFuncBravo04 := testFuncDtoBravo04{}
+	tFuncDelta04 := testFuncDtoDelta04{}
 
-	err := tFuncBravo04.tx4DoNothing(
+	return tFuncDelta04.Tx4DoFunThings(
 		returnError,
 		ePrefix)
-
-	return err
 }
 
-type testFuncDtoBravo04 struct {
+type testFuncDtoDelta04 struct {
 	input string
 }
 
-func (tFuncBravo04 *testFuncDtoBravo04) tx4DoNothing(
+func (tFuncDelta04 *testFuncDtoDelta04) Tx4DoFunThings(
 	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
@@ -122,25 +115,22 @@ func (tFuncBravo04 *testFuncDtoBravo04) tx4DoNothing(
 	}
 
 	ePrefix.SetEPref(
-		"testFuncDtoBravo04." +
-			"tx4DoNothing()")
+		"testFuncDtoDelta04." +
+			"Tx4DoFunThings()")
 
-	tFuncBravo05 := testFuncDtoBravo05{}
+	tFuncDelta05 := testFuncDtoDelta05{}
 
-	ePrefix.SetCtx("A/B==4")
-
-	err := tFuncBravo05.tx5DoSomethingBig(
+	return tFuncDelta05.Tx5DoExcitingThings(
 		returnError,
 		ePrefix)
 
-	return err
 }
 
-type testFuncDtoBravo05 struct {
+type testFuncDtoDelta05 struct {
 	input string
 }
 
-func (tFuncBravo05 *testFuncDtoBravo05) tx5DoSomethingBig(
+func (tFuncDelta05 *testFuncDtoDelta05) Tx5DoExcitingThings(
 	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
@@ -151,25 +141,23 @@ func (tFuncBravo05 *testFuncDtoBravo05) tx5DoSomethingBig(
 	}
 
 	ePrefix.SetEPref(
-		"testFuncDtoBravo05." +
-			"tx5DoSomethingBig()")
+		"testFuncDtoDelta05." +
+			"Tx5DoExcitingThings()")
 
-	tFuncBravo06 := testFuncDtoBravo06{}
+	tFuncDelta06 := testFuncDtoDelta06{}
 
-	ePrefix.SetCtx("A->B")
-
-	err := tFuncBravo06.tx6GiveUp(
+	return tFuncDelta06.Tx6DoUnbelievableThings(
 		returnError,
-		ePrefix)
+		ePrefix.XCtx(
+			"X*Y"))
 
-	return err
 }
 
-type testFuncDtoBravo06 struct {
+type testFuncDtoDelta06 struct {
 	input string
 }
 
-func (tFuncY6 *testFuncDtoBravo06) tx6GiveUp(
+func (tFuncDelta06 *testFuncDtoDelta06) Tx6DoUnbelievableThings(
 	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
@@ -179,17 +167,19 @@ func (tFuncY6 *testFuncDtoBravo06) tx6GiveUp(
 		ePrefix = ePrefix.CopyPtr()
 	}
 
-	ePrefix.SetEPref("Tx6GiveUp()")
-
-	ePrefix.SetCtx("A/B = C B==0")
+	ePrefix.SetEPrefCtx(
+		"testFuncDtoDelta06."+
+			"Tx6DoUnbelievableThings()",
+		"Error Context: Looking For Higgs Boson!")
 
 	var err error
 
 	if returnError {
 		err = fmt.Errorf("%v\n"+
-			"Error= An Error Ocurred! Something Bad...\n"+
-			"Maybe it is Divide By Zero!\n",
-			ePrefix.String())
+			"Error= %v",
+			ePrefix.String(),
+			"Real bad error! Yikes! We created a local black hole by mistake!\n")
+
 	}
 
 	return err

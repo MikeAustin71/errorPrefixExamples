@@ -92,7 +92,7 @@ func (tFuncDto TestFuncsDto) TestMethodSeries001(
 
 	tBravo := exDto.TestFuncDtoBravo01{}
 
-	err = tBravo.Tx1DoSomethingSpecial(
+	err = tBravo.Tx1TrySomethingSpecial(
 		false, // Do NOT return an error
 		ePref)
 
@@ -100,6 +100,7 @@ func (tFuncDto TestFuncsDto) TestMethodSeries001(
 
 	// This returns an error
 	err = tCharlie.Tx1DoStuff(
+		true,
 		ePref)
 
 	if err != nil {

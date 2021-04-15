@@ -26,6 +26,7 @@ type TestFuncDtoCharlie01 struct {
 }
 
 func (tFuncDtoCharlie01 *TestFuncDtoCharlie01) Tx1DoStuff(
+	returnError bool,
 	errorPrefix interface{}) error {
 
 	var ePrefix *erPref.ErrPrefixDto
@@ -34,21 +35,17 @@ func (tFuncDtoCharlie01 *TestFuncDtoCharlie01) Tx1DoStuff(
 	ePrefix,
 		err = erPref.ErrPrefixDto{}.NewIEmpty(
 		errorPrefix,
-		"TestFuncDtoAlpha01.Tx1DoSomething()",
-		"")
+		"TestFuncDtoAlpha01.Tx1DoStuff()",
+		"X->Y")
 
 	if err != nil {
 		return err
 	}
 
-	ePrefix.SetEPrefCtx(
-		"testFuncCharlie01."+
-			"Tx1DoStuff()",
-		"X->Y")
-
 	tFuncCharlie02 := testFuncDtoCharlie02{}
 
 	return tFuncCharlie02.Tx2DoMoreStuff(
+		returnError,
 		ePrefix)
 }
 
@@ -57,6 +54,7 @@ type testFuncDtoCharlie02 struct {
 }
 
 func (tFuncCharlie02 *testFuncDtoCharlie02) Tx2DoMoreStuff(
+	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
 	if ePrefix == nil {
@@ -72,6 +70,7 @@ func (tFuncCharlie02 *testFuncDtoCharlie02) Tx2DoMoreStuff(
 	tFuncCharlie03 := testFuncDtoCharlie03{}
 
 	return tFuncCharlie03.Tx3DoLessStuff(
+		returnError,
 		ePrefix.XCtx(
 			"B->C"))
 }
@@ -81,6 +80,7 @@ type testFuncDtoCharlie03 struct {
 }
 
 func (tFuncCharlie03 *testFuncDtoCharlie03) Tx3DoLessStuff(
+	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
 	if ePrefix == nil {
@@ -96,6 +96,7 @@ func (tFuncCharlie03 *testFuncDtoCharlie03) Tx3DoLessStuff(
 	tFuncCharlie04 := testFuncDtoCharlie04{}
 
 	return tFuncCharlie04.Tx4DoFunStuff(
+		returnError,
 		ePrefix)
 }
 
@@ -104,6 +105,7 @@ type testFuncDtoCharlie04 struct {
 }
 
 func (tFuncCharlie04 *testFuncDtoCharlie04) Tx4DoFunStuff(
+	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
 	if ePrefix == nil {
@@ -119,6 +121,7 @@ func (tFuncCharlie04 *testFuncDtoCharlie04) Tx4DoFunStuff(
 	tFuncCharlie05 := testFuncDtoCharlie05{}
 
 	return tFuncCharlie05.Tx5DoExcitingStuff(
+		returnError,
 		ePrefix)
 
 }
@@ -128,6 +131,7 @@ type testFuncDtoCharlie05 struct {
 }
 
 func (tFuncCharlie05 *testFuncDtoCharlie05) Tx5DoExcitingStuff(
+	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
 	if ePrefix == nil {
@@ -143,6 +147,7 @@ func (tFuncCharlie05 *testFuncDtoCharlie05) Tx5DoExcitingStuff(
 	tFuncCharlie06 := testFuncDtoCharlie06{}
 
 	return tFuncCharlie06.Tx6DoSpaceStuff(
+		returnError,
 		ePrefix.XCtx(
 			"X*Y"))
 
@@ -153,6 +158,7 @@ type testFuncDtoCharlie06 struct {
 }
 
 func (tFuncCharlie06 *testFuncDtoCharlie06) Tx6DoSpaceStuff(
+	returnError bool,
 	ePrefix *erPref.ErrPrefixDto) error {
 
 	if ePrefix == nil {
@@ -166,8 +172,15 @@ func (tFuncCharlie06 *testFuncDtoCharlie06) Tx6DoSpaceStuff(
 			"Tx6DoSpaceStuff()",
 		"Error Context: Asteroid Collision!")
 
-	return fmt.Errorf("%v\n"+
-		"Error= %v",
-		ePrefix.String(),
-		"Real bad error! Something hit the space ship!\n")
+	var err error
+
+	if returnError {
+		err = fmt.Errorf("%v\n"+
+			"Error= %v",
+			ePrefix.String(),
+			"Real bad error! Something hit the space ship!\n")
+
+	}
+
+	return err
 }

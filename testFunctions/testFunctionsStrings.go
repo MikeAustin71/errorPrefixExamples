@@ -36,7 +36,7 @@ func (tFuncStrs TestFuncsStrings) TestMethodSeries001(callingMethodName string) 
 
 	tBravo := exDto.TestFuncDtoBravo01{}
 
-	err = tBravo.Tx1DoSomethingSpecial(
+	err = tBravo.Tx1TrySomethingSpecial(
 		false, // Do NOT return an error
 		errPrefStr)
 
@@ -44,6 +44,7 @@ func (tFuncStrs TestFuncsStrings) TestMethodSeries001(callingMethodName string) 
 
 	// This returns an error
 	err = tCharlie.Tx1DoStuff(
+		true,
 		errPrefStr)
 
 	if err != nil {
