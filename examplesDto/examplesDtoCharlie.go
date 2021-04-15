@@ -176,7 +176,7 @@ func (tFuncCharlie06 *testFuncDtoCharlie06) Tx6DoSpaceStuff(
 
 	if returnError {
 		err = fmt.Errorf("%v\n"+
-			"Error= %v",
+			"Example Error: %v",
 			ePrefix.String(),
 			"Real bad error! Something hit the space ship!\n")
 

@@ -176,7 +176,7 @@ func (tFuncDelta06 *testFuncDtoDelta06) Tx6DoUnbelievableThings(
 
 	if returnError {
 		err = fmt.Errorf("%v\n"+
-			"Error= %v",
+			"Example Error: %v",
 			ePrefix.String(),
 			"Real bad error! Yikes! We created a local black hole by mistake!\n")
 

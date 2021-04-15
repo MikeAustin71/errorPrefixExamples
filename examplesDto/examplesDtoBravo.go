@@ -183,7 +183,7 @@ func (tFuncY6 *testFuncDtoBravo06) tx6TryGivingUp(
 
 	if returnError {
 		err = fmt.Errorf("%v\n"+
-			"Error= An Error Ocurred! Something Bad...\n"+
+			"Example Error: An Error Ocurred! Something Bad...\n"+
 			"Maybe it is Divide By Zero!\n",
 			ePrefix.String())
 	}
