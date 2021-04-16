@@ -13,14 +13,20 @@ import (
 //  testFunctions.TestFuncsStrings{}
 //
 func main() {
-	mainTest003()
+
+	mt := MainTest{}
+
+	mt.mainTest005()
+}
+
+type MainTest struct {
 }
 
 // Runs a series of methods and prints the
 // example error message returned by the last
 // method in the series.
 //
-func mainTest001() {
+func (mt MainTest) mainTest001() {
 
 	tFuncDto := testFunctions.TestFuncsDto{}
 
@@ -45,7 +51,7 @@ func mainTest001() {
 //
 // In addition, this test specifies a maximum
 // error prefix line length of 70
-func mainTest002() {
+func (mt MainTest) mainTest002() {
 
 	tFuncDto := testFunctions.TestFuncsDto{}
 
@@ -65,7 +71,7 @@ func mainTest002() {
 }
 
 // mainTest003 - This is designed as a "Concurrency" example.
-func mainTest003() {
+func (mt MainTest) mainTest003() {
 
 	tFuncDto := testFunctions.TestFuncsDto{}.Ptr()
 
@@ -120,6 +126,52 @@ func mainTest003() {
 			"One or more methods returned a real error!\n")
 	} else {
 		fmt.Printf("\n\nSUCCESSFUL COMPLETION!\n")
+	}
+
+}
+
+// mainTest004 - Executes Test TestFuncsDto.TestAlphaDto001()
+// with a returned error message printed to the terminal.
+func (mt MainTest) mainTest004() {
+
+	tFuncDto := testFunctions.TestFuncsDto{}
+
+	err := tFuncDto.TestAlphaDto001(
+		true,
+		true,
+		"main()-mainTest004()")
+
+	if err != nil {
+		fmt.Printf("A REAL SYSTEM ERROR WAS RETURNED!\n"+
+			"Error=\n%v\n\n",
+			err.Error())
+	} else {
+		fmt.Printf("\n\n\nSUCCESSFUL COMPLETION!\n\n")
+	}
+
+}
+
+// mainTest005 - Executes Test TestFuncsDto.TestAlphaDto001()
+// with returned error message printed to the terminal.
+//
+// The maximum text line length is set to 70-characters.
+//
+func (mt MainTest) mainTest005() {
+
+	tFuncDto := testFunctions.TestFuncsDto{}
+
+	err := tFuncDto.TestBravoDto002(
+		true,
+		true,
+		70,
+		"main()-mainTest005()")
+
+	if err != nil {
+		fmt.Printf("A REAL SYSTEM ERROR WAS RETURNED!\n"+
+			"Error=\n%v\n\n",
+			err.Error())
+	} else {
+		fmt.Printf("\n\n\nSUCCESSFUL COMPLETION!\n\n")
 	}
 
 }

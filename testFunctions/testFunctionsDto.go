@@ -6,6 +6,7 @@ import (
 	erPref "github.com/MikeAustin71/errpref"
 	"strings"
 	"sync"
+	"time"
 )
 
 type TestFuncsDto struct{}
@@ -24,12 +25,13 @@ func (tFuncDto TestFuncsDto) Ptr() *TestFuncsDto {
 // An example error is only triggered on the last method in the
 // chain if input parameter, 'returnExampleError' is set to 'true'.
 //
-// If the input parameter 'returnExampleError' is set to 'true',
-// this method will print the example error message to the
-// terminal.
+// If the input parameter 'returnExampleError' is set to 'true' and
+// the input parameter 'showExampleErrorMsg' is set to true, this
+// method will print the example error message to the terminal.
 //
 func (tFuncDto TestFuncsDto) TestAlphaDto001(
 	returnExampleError bool,
+	showExampleErrorMsg bool,
 	callingMethodName string) error {
 
 	tAlpha := exDto.TestFuncDtoAlpha01{}
@@ -62,6 +64,7 @@ func (tFuncDto TestFuncsDto) TestAlphaDto001(
 	}
 
 	if returnExampleError == true &&
+		showExampleErrorMsg == true &&
 		err != nil {
 
 		fmt.Printf("\nPRINTING EXAMPLE ERROR MESSAGE\n\n")
@@ -80,12 +83,20 @@ func (tFuncDto TestFuncsDto) TestAlphaDto001(
 // An example error is only triggered on the last method in the
 // chain if input parameter, 'returnExampleError' is set to 'true'.
 //
-// If the input parameter 'returnExampleError' is set to 'true',
-// this method will print the example error message to the
-// terminal.
+// If the input parameter 'returnExampleError' is set to 'true' and
+// the input parameter 'showExampleErrorMsg' is set to true, this
+// method will print the example error message to the terminal.
+//
+// Input parameter 'maxLineLength' is used to control the maximum
+// line length of the error prefix information printed to the
+// terminal. If this parameter is set to a value of minus one (-1),
+// the default maximum line length will be applied. The current
+// default maximum line length is 40-characters.
 //
 func (tFuncDto TestFuncsDto) TestBravoDto002(
 	returnExampleError bool,
+	showExampleErrorMsg bool,
+	maxLineLength int,
 	callingMethodName string) error {
 
 	ePrefDto := erPref.ErrPrefixDto{}
@@ -93,6 +104,8 @@ func (tFuncDto TestFuncsDto) TestBravoDto002(
 	ePref := ePrefDto.NewEPrefOld(callingMethodName)
 
 	ePref.SetEPref("TestFuncsDto.TestAlphaDto002()")
+
+	ePref.SetMaxTextLineLen(maxLineLength)
 
 	var testMsg string
 	var err error
@@ -116,6 +129,7 @@ func (tFuncDto TestFuncsDto) TestBravoDto002(
 	}
 
 	if returnExampleError == true &&
+		showExampleErrorMsg == true &&
 		err != nil {
 
 		fmt.Printf("\nPRINTING EXAMPLE ERROR MESSAGE\n\n")
@@ -383,6 +397,8 @@ func (tFuncDto *TestFuncsDto) TestMethodSeries003(c chan int, wg *sync.WaitGroup
 	ePrefDto.SetEPrefCtx("TestMethodSeries003",
 		"Alpha-Bravo-Charlie-Delta Test")
 
+	var millisecondTimeDelay time.Duration = 50
+
 	tAlpha := exDto.TestFuncDtoAlpha01{}
 	var err error
 
@@ -408,6 +424,8 @@ func (tFuncDto *TestFuncsDto) TestMethodSeries003(c chan int, wg *sync.WaitGroup
 		err = nil
 	}
 
+	time.Sleep(time.Millisecond * millisecondTimeDelay)
+
 	tBravo := exDto.TestFuncDtoBravo01{}
 
 	err = tBravo.Tx1TrySomethingSpecial(
@@ -426,6 +444,8 @@ func (tFuncDto *TestFuncsDto) TestMethodSeries003(c chan int, wg *sync.WaitGroup
 
 		err = nil
 	}
+
+	time.Sleep(time.Millisecond * millisecondTimeDelay)
 
 	tCharlie := exDto.TestFuncDtoCharlie01{}
 
@@ -447,6 +467,8 @@ func (tFuncDto *TestFuncsDto) TestMethodSeries003(c chan int, wg *sync.WaitGroup
 		err = nil
 	}
 
+	time.Sleep(time.Millisecond * millisecondTimeDelay)
+
 	tDelta := exDto.TestFuncDtoDelta01{}
 
 	// This may return an example error depending
@@ -467,6 +489,8 @@ func (tFuncDto *TestFuncsDto) TestMethodSeries003(c chan int, wg *sync.WaitGroup
 		}
 
 	}
+
+	time.Sleep(time.Millisecond * millisecondTimeDelay)
 
 	c <- 1
 	return
