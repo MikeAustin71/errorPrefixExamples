@@ -16,7 +16,7 @@ func main() {
 
 	mt := MainTest{}
 
-	mt.mainTest005()
+	mt.mainTest004()
 }
 
 type MainTest struct {
@@ -132,6 +132,11 @@ func (mt MainTest) mainTest003() {
 
 // mainTest004 - Executes Test TestFuncsDto.TestAlphaDto001()
 // with a returned error message printed to the terminal.
+//
+// The printed example error messages demonstrates error prefix
+// information displayed with the default Maximum Text Line
+// Length of 40-characters.
+//
 func (mt MainTest) mainTest004() {
 
 	tFuncDto := testFunctions.TestFuncsDto{}
