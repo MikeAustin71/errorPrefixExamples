@@ -16,7 +16,7 @@ func main() {
 
 	mt := MainTest{}
 
-	mt.mainTest003()
+	mt.mainTest007()
 }
 
 type MainTest struct {
@@ -171,6 +171,55 @@ func (mt MainTest) mainTest005() {
 		true,
 		70,
 		"main()-mainTest005()")
+
+	if err != nil {
+		fmt.Printf("A REAL SYSTEM ERROR WAS RETURNED!\n"+
+			"Error=\n%v\n\n",
+			err.Error())
+	} else {
+		fmt.Printf("\n\n\nSUCCESSFUL COMPLETION!\n\n")
+	}
+
+}
+
+// This method calls TestFuncsDto.TestIBuilder004() which provides
+// example usage of the IBuilderErrorPrefix interface.
+//
+// This method will display an example error message at the
+// terminal.
+//
+func (mt MainTest) mainTest006() {
+
+	tFuncDto := testFunctions.TestFuncsDto{}
+
+	err := tFuncDto.TestIBuilder004(
+		true,
+		true)
+
+	if err != nil {
+		fmt.Printf("A REAL SYSTEM ERROR WAS RETURNED!\n"+
+			"Error=\n%v\n\n",
+			err.Error())
+	} else {
+		fmt.Printf("\n\n\nSUCCESSFUL COMPLETION!\n\n")
+	}
+
+}
+
+// mainTest007() - Calls TestFuncsDto.TestDelimiters005() which
+// demonstrates the variable input/output string delimiters
+// feature.
+//
+// This method will display an example error message at the
+// terminal.
+//
+func (mt MainTest) mainTest007() {
+
+	tFuncDto := testFunctions.TestFuncsDto{}
+
+	err := tFuncDto.TestDelimiters005(
+		true,
+		true)
 
 	if err != nil {
 		fmt.Printf("A REAL SYSTEM ERROR WAS RETURNED!\n"+

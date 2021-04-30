@@ -512,69 +512,197 @@ func (tFuncDto *TestFuncsDto) TestMethodSeries003(c chan int, wg *sync.WaitGroup
 // Type TestIBuilderErrPref implements the IBuilderErrorPrefix
 // interface.
 //
+//
+// This method calls the Delta method chains with an ErrPrefixDto
+// created from an IBuilderErrorPrefix object.
+//
+// An example error is only triggered on the last method in the
+// chain if input parameter, 'returnExampleError' is set to 'true'.
+//
+// If the input parameter 'returnExampleError' is set to 'true' and
+// the input parameter 'showExampleErrorMsg' is set to true, this
+// method will print the example error message to the terminal.
+//
+// This method sets the maximum line length for error prefix
+// strings to 60-characters and does NOT implement a left margin.
+//
+//
+func (tFuncDto *TestFuncsDto) TestIBuilder004(
+	returnExampleError bool,
+	showExampleErrorMsg bool) error {
 
-//func (tFuncDto *TestFuncsDto) TestIBuilder004() {
-//
-//	var twoDSlice [][2]string
-//
-//	twoDSlice = make([][2]string, 14)
-//
-//	twoDSlice[0][0] = "Tx1.Something()"
-//	twoDSlice[0][1] = ""
-//
-//	twoDSlice[1][0] = "Tx2.SomethingElse()"
-//	twoDSlice[1][1] = ""
-//
-//	twoDSlice[2][0] = "Tx3.DoSomething()"
-//	twoDSlice[2][1] = ""
-//
-//	twoDSlice[3][0] = "Tx4()"
-//	twoDSlice[3][1] = ""
-//
-//	twoDSlice[4][0] = "Tx5()"
-//	twoDSlice[4][1] = ""
-//
-//	twoDSlice[5][0] = "Tx6.DoSomethingElse()"
-//	twoDSlice[5][1] = ""
-//
-//	twoDSlice[6][0] = "Tx7.TrySomethingNew()"
-//	twoDSlice[6][1] = "something->newSomething"
-//
-//	twoDSlice[7][0] = "Tx8.TryAnyCombination()"
-//	twoDSlice[7][1] = ""
-//
-//	twoDSlice[8][0] = "Tx9.TryAHammer()"
-//	twoDSlice[8][1] = "x->y"
-//
-//	twoDSlice[9][0] = "Tx10.X()"
-//	twoDSlice[9][1] = ""
-//
-//	twoDSlice[10][0] = "Tx11.TryAnything()"
-//	twoDSlice[10][1] = ""
-//
-//	twoDSlice[11][0] = "Tx12.TryASalad()"
-//	twoDSlice[11][1] = ""
-//
-//	twoDSlice[12][0] = "Tx13.SomeFabulousAndComplexStuff()"
-//	twoDSlice[12][1] = ""
-//
-//	twoDSlice[13][0] = "Tx14.MoreAwesomeGoodness"
-//	twoDSlice[13][1] = "A=7 B=8 C=9"
-//
-//	iBuilder := exDto.TestIBuilderErrPref{}
-//
-//	iBuilder.SetEPrefStrings(twoDSlice)
-//
-//	ePDto1 := erPref.ErrPrefixDto{}.New()
-//
-//	ePDto1.SetEPrefStrings(twoDSlice)
-//
-//	ePDto1.SetMaxTextLineLen(40)
-//
-//	ePDto2 := erPref.ErrPrefixDto{}.New()
-//
-//	ePDto2.SetMaxTextLineLen(40)
-//
-//	ePDto2.SetIB
-//
-//}
+	var twoDSlice [][2]string
+
+	twoDSlice = make([][2]string, 14)
+
+	twoDSlice[0][0] = "Tx1.Something()"
+	twoDSlice[0][1] = ""
+
+	twoDSlice[1][0] = "Tx2.SomethingElse()"
+	twoDSlice[1][1] = ""
+
+	twoDSlice[2][0] = "Tx3.DoSomething()"
+	twoDSlice[2][1] = ""
+
+	twoDSlice[3][0] = "Tx4()"
+	twoDSlice[3][1] = ""
+
+	twoDSlice[4][0] = "Tx5()"
+	twoDSlice[4][1] = ""
+
+	twoDSlice[5][0] = "Tx6.DoSomethingElse()"
+	twoDSlice[5][1] = ""
+
+	twoDSlice[6][0] = "Tx7.TrySomethingNew()"
+	twoDSlice[6][1] = "something->newSomething"
+
+	twoDSlice[7][0] = "Tx8.TryAnyCombination()"
+	twoDSlice[7][1] = ""
+
+	twoDSlice[8][0] = "Tx9.TryAHammer()"
+	twoDSlice[8][1] = "x->y"
+
+	twoDSlice[9][0] = "Tx10.X()"
+	twoDSlice[9][1] = ""
+
+	twoDSlice[10][0] = "Tx11.TryAnything()"
+	twoDSlice[10][1] = ""
+
+	twoDSlice[11][0] = "Tx12.TryASalad()"
+	twoDSlice[11][1] = ""
+
+	twoDSlice[12][0] = "Tx13.SomeFabulousAndComplexStuff()"
+	twoDSlice[12][1] = ""
+
+	twoDSlice[13][0] = "Tx14.MoreAwesomeGoodness"
+	twoDSlice[13][1] = "A=7 B=8 C=9"
+
+	iBuilder := exDto.TestIBuilderErrPref{}
+
+	iBuilder.SetEPrefStrings(twoDSlice)
+
+	ePrefDto := erPref.ErrPrefixDto{}.New()
+
+	ePrefDto.SetMaxTextLineLen(60)
+
+	thisFunc := "TestFuncsDto.TestIBuilder004()"
+
+	err := ePrefDto.SetIBuilder(
+		&iBuilder,
+		thisFunc)
+
+	if err != nil {
+		return err
+	}
+
+	ePrefDto.SetEPref(thisFunc)
+
+	tDelta := exDto.TestFuncDtoDelta01{}
+
+	// This may return an example error depending
+	// on the value of 'returnExampleError'.
+	err = tDelta.Tx1DoGreatThings(
+		returnExampleError,
+		ePrefDto)
+
+	if err != nil {
+
+		testMsg := fmt.Sprintf("%v",
+			err.Error())
+
+		if !strings.Contains(testMsg, "Example Error") {
+
+			return err
+		}
+
+	}
+
+	if returnExampleError == true &&
+		showExampleErrorMsg == true &&
+		err != nil {
+
+		fmt.Printf("\nPRINTING EXAMPLE ERROR MESSAGE\n\n")
+
+		fmt.Printf("%v",
+			err.Error())
+	}
+
+	return nil
+}
+
+func (tFuncDto *TestFuncsDto) TestDelimiters005(
+	returnExampleError bool,
+	showExampleErrorMsg bool) error {
+
+	thisFunc := "TestFuncsDto.TestDelimiters005() "
+
+	oldErrPrefix := "Tx1.Something()**" +
+		"Tx2.SomethingElse()**" +
+		"Tx3.DoSomething()**" +
+		"Tx4()**" +
+		"Tx5()**" +
+		"Tx6.DoSomethingElse()"
+
+	inputDelimiters,
+		err :=
+		erPref.ErrPrefixDelimiters{}.New(
+			"\n",
+			"**",
+			"\n",
+			"--",
+			thisFunc)
+
+	if err != nil {
+		return err
+	}
+
+	var outputDelimiters erPref.ErrPrefixDelimiters
+
+	outputDelimiters,
+		err = erPref.ErrPrefixDelimiters{}.New(
+		"\n * ",
+		" - ",
+		"\n  ",
+		" $ ",
+		thisFunc)
+
+	if err != nil {
+		return err
+	}
+
+	tfEcho := exDto.TestFuncDtoEcho01{}
+
+	err =
+		tfEcho.Tx1CreateSomething(
+			returnExampleError,
+			oldErrPrefix,
+			inputDelimiters,
+			outputDelimiters)
+
+	if err != nil {
+
+		testMsg := fmt.Sprintf("%v",
+			err.Error())
+
+		if !strings.Contains(testMsg, "Example Error") {
+
+			return err
+		}
+
+	}
+
+	if returnExampleError == true &&
+		showExampleErrorMsg == true &&
+		err != nil {
+
+		fmt.Printf("\nORIGINAL Error Prefix Info in String Format\n")
+		fmt.Printf("%v\n\n\n",
+			oldErrPrefix)
+		fmt.Printf("PRINTING EXAMPLE ERROR MESSAGE\n\n")
+
+		fmt.Printf("%v",
+			err.Error())
+	}
+
+	return nil
+}
