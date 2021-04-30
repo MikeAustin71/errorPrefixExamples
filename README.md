@@ -38,7 +38,7 @@ module github.com/MikeAustin71/errorPrefixExamples
 
 go 1.16
 
-require github.com/MikeAustin71/errpref v1.5.2
+require github.com/MikeAustin71/errpref v1.6.1
 
 ```
 
@@ -68,7 +68,7 @@ If problems are encountered configuring the ***errpref*** package, try the follo
 1. From the command line run: 
 
    ```text
-   go get github.com/MikeAustin71/errpref@v1.5.2 
+   go get github.com/MikeAustin71/errpref@v1.6.1 
    
    				or 
    
@@ -95,24 +95,30 @@ All the test functions are located in ***testFunctions/testFunctionsDto.go*** an
 
 The best usage examples are located at:
 
-***examplesDto/exampleDtoAlpha.go***
+***examplesDto/examplesDtoAlpha.go***
 
-***examplesDto/exampleDtoBravo.go***
+***examplesDto/examplesDtoBravo.go***
 
-***examplesDto/exampleDtoCharlie.go***
+***examplesDto/examplesDtoCharlie.go***
+
+***examplesDto/examplesDtoDelta.go***
+
+***examplesDto/examplesDtoEcho.go***
+
+***examplesDto/examplesIBuilder.go***
 
 
 
 ### *main.go*
 
-1. First configure ***app/main.go*** to call the desired test function in in ***testFunctions/testFunctionsDto.go*** or ***testFunctions/testFunctionsStrings.go***.
+1. First configure ***app/main.go*** to call the desired test function from Type  ***MainTest*** also located in ***app/main.go***. Then configure function ***main()*** to call a specific test like ***MainTest.mainTest001()***, ***MainTest.mainTest002()***, **MainTest.mainTest003()** etc.
 2. From the command line in directory ***errorPrefixExamples\app***, issue the command **go run main.go**. Test results will then be displayed in the command line interface. 
 
 
 
 ## Version
 
-The latest version of the **errorPrefixExamples** application is Version 1.5.2.  This corresponds to the version number of the latest version of the ***errpref*** software package.
+The latest version of the **errorPrefixExamples** application is Version 1.6.1.  This corresponds to the version number of the latest version of the ***errpref*** software package.
 
 
 
