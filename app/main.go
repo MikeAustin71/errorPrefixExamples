@@ -16,7 +16,7 @@ func main() {
 
 	mt := MainTest{}
 
-	mt.mainTest004()
+	mt.mainTest003()
 }
 
 type MainTest struct {
@@ -71,6 +71,7 @@ func (mt MainTest) mainTest002() {
 }
 
 // mainTest003 - This is designed as a "Concurrency" example.
+//
 func (mt MainTest) mainTest003() {
 
 	tFuncDto := testFunctions.TestFuncsDto{}.Ptr()
