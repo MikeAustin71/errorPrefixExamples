@@ -16,7 +16,7 @@ func main() {
 
 	mt := MainTest{}
 
-	mt.mainTest007()
+	mt.mainTest008()
 }
 
 type MainTest struct {
@@ -220,6 +220,32 @@ func (mt MainTest) mainTest007() {
 	err := tFuncDto.TestDelimiters005(
 		true,
 		true)
+
+	if err != nil {
+		fmt.Printf("A REAL SYSTEM ERROR WAS RETURNED!\n"+
+			"Error=\n%v\n\n",
+			err.Error())
+	} else {
+		fmt.Printf("\n\n\nSUCCESSFUL COMPLETION!\n\n")
+	}
+
+}
+
+// mainTest007() - Calls TestFuncsDto.TestDelimiters005() which
+// demonstrates the variable input/output string delimiters
+// feature.
+//
+// This method will display an example error message at the
+// terminal.
+//
+func (mt MainTest) mainTest008() {
+
+	tFuncDto := testFunctions.TestFuncsDto{}
+
+	err := tFuncDto.TestMethodSeries004(
+		true,
+		true,
+		"mainTest008()")
 
 	if err != nil {
 		fmt.Printf("A REAL SYSTEM ERROR WAS RETURNED!\n"+

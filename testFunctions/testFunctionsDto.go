@@ -267,8 +267,8 @@ func (tFuncDto TestFuncsDto) TestMethodSeries001(
 // the input parameter 'showExampleErrorMsg' is set to true, this
 // method will print the example error message to the terminal.
 //
-// This method relies on default maximum line length for error prefix
-// strings and does NOT implement a left margin.
+// This method sets the maximum line length for error prefix
+// strings to 70-characters. It does NOT implement a left margin.
 //
 func (tFuncDto TestFuncsDto) TestMethodSeries002(
 	returnExampleError bool,
@@ -494,6 +494,139 @@ func (tFuncDto *TestFuncsDto) TestMethodSeries003(c chan int, wg *sync.WaitGroup
 
 	c <- 1
 	return
+}
+
+// TestMethodSeries004 - This method is designed to test the
+// Leading and Trailing Text String feature implemented by type
+// ErrPrefixDto.
+//
+// This method/calls the Alpha, Bravo and Charlie method chains
+// with an ErrPrefixDto object.
+//
+// An example error is only triggered on the last method in the
+// chain if input parameter, 'returnExampleError' is set to 'true'.
+//
+// If the input parameter 'returnExampleError' is set to 'true' and
+// the input parameter 'showExampleErrorMsg' is set to true, this
+// method will print the example error message to the terminal.
+//
+// This method sets the maximum line length for error prefix
+// strings to 70-characters.
+//
+func (tFuncDto TestFuncsDto) TestMethodSeries004(
+	returnExampleError bool,
+	showExampleErrorMsg bool,
+	callingMethodName string) error {
+
+	ePrefDto := erPref.ErrPrefixDto{}
+
+	ePrefDto.SetEPrefOld(callingMethodName)
+
+	ePrefDto.SetEPrefCtx("TestMethodSeries004",
+		"Alpha-Bravo-Charlie-Delta Test - Max Line Len=70")
+
+	ePrefDto.SetMaxTextLineLen(70)
+
+	leadingTextStr := "\n" +
+		strings.Repeat("-", 69)
+
+	ePrefDto.SetLeadingTextStr(leadingTextStr)
+
+	trailingTextStr := "\n" +
+		strings.Repeat("-", 69) +
+		"\n"
+
+	ePrefDto.SetTrailingTextStr(trailingTextStr)
+
+	tAlpha := exDto.TestFuncDtoAlpha01{}
+	var err error
+
+	err = tAlpha.Tx1DoSomething(
+		false, // Do NOT return error
+		ePrefDto)
+
+	var testMsg string
+
+	if err != nil {
+		testMsg = fmt.Sprintf("%v",
+			err.Error())
+
+		if !strings.Contains(testMsg, "Example Error") {
+
+			return err
+		}
+
+		err = nil
+	}
+
+	tBravo := exDto.TestFuncDtoBravo01{}
+
+	err = tBravo.Tx1TrySomethingSpecial(
+		false, // Do NOT return an error
+		ePrefDto)
+
+	if err != nil {
+		testMsg = fmt.Sprintf("%v",
+			err.Error())
+
+		if !strings.Contains(testMsg, "Example Error") {
+
+			return err
+		}
+
+		err = nil
+	}
+
+	tCharlie := exDto.TestFuncDtoCharlie01{}
+
+	err = tCharlie.Tx1DoStuff(
+		false, // Do NOT return an error
+		ePrefDto)
+
+	if err != nil {
+
+		testMsg = fmt.Sprintf("%v",
+			err.Error())
+
+		if !strings.Contains(testMsg, "Example Error") {
+
+			return err
+		}
+
+		err = nil
+	}
+
+	tDelta := exDto.TestFuncDtoDelta01{}
+
+	// This may return an example error depending
+	// on the value of 'returnExampleError'.
+	err = tDelta.Tx1DoGreatThings(
+		returnExampleError,
+		ePrefDto)
+
+	if err != nil {
+
+		testMsg = fmt.Sprintf("%v",
+			err.Error())
+
+		if !strings.Contains(testMsg, "Example Error") {
+
+			return err
+		}
+
+	}
+
+	if returnExampleError == true &&
+		showExampleErrorMsg == true &&
+		err != nil {
+
+		fmt.Printf("\nPRINTING EXAMPLE ERROR MESSAGE\n\n")
+
+		fmt.Printf("%v",
+			err.Error())
+	}
+
+	return nil
 }
 
 // TestIBuilder004 - Demonstrates interoperability of the
