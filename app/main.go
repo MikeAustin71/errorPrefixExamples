@@ -12,6 +12,10 @@ import (
 //            and
 //  testFunctions.TestFuncsStrings{}
 //
+// Be advised - This test application is using
+// github.com/MikeAustin71/errpref package
+// version 1.7.0.
+//
 func main() {
 
 	mt := MainTest{}
