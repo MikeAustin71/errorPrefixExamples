@@ -68,7 +68,7 @@ If problems are encountered configuring the ***errpref*** package, try the follo
 1. From the command line run: 
 
    ```text
-   go get github.com/MikeAustin71/errpref@v1.6.1 
+   go get github.com/MikeAustin71/errpref@v1.7.0 
    
    				or 
    
@@ -118,7 +118,7 @@ The best usage examples are located at:
 
 ## Version
 
-The latest version of the **errorPrefixExamples** application is Version 1.6.1.  This corresponds to the version number of the latest version of the ***errpref*** software package.
+The latest version of the **errorPrefixExamples** application is Version 1.7.0.  This corresponds to the version number of the latest version of the ***errpref*** software package.
 
 
 
