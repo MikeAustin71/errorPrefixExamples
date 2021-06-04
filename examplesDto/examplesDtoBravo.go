@@ -29,6 +29,7 @@ type TestFuncDtoBravo01 struct {
 func (tFuncDtoBravo01 *TestFuncDtoBravo01) Tx1TrySomethingSpecial(
 	returnError bool,
 	errorPrefix interface{}) error {
+
 	var ePrefix *erPref.ErrPrefixDto
 	var err error
 
@@ -55,21 +56,21 @@ type testFuncDtoBravo02 struct {
 
 func (tFuncBravo02 *testFuncDtoBravo02) tx2TrySomethingElse(
 	returnError bool,
-	ePrefix *erPref.ErrPrefixDto) error {
+	ePrefDto *erPref.ErrPrefixDto) error {
 
-	if ePrefix == nil {
-		ePrefix = erPref.ErrPrefixDto{}.Ptr()
-	} else {
-		ePrefix = ePrefix.CopyPtr()
+	ePrefix,
+		err := erPref.ErrPrefixDto{}.NewFromErrPrefDto(
+		ePrefDto,
+		"testFuncDtoBravo02.tx2TrySomethingElse()",
+		"")
+
+	if err != nil {
+		return err
 	}
-
-	ePrefix.SetEPref(
-		"testFuncDtoBravo02." +
-			"tx2TrySomethingElse()")
 
 	tFuncBravo03 := testFuncDtoBravo03{}
 
-	err := tFuncBravo03.tx3TryAnything(
+	err = tFuncBravo03.tx3TryAnything(
 		returnError,
 		ePrefix)
 
@@ -82,21 +83,21 @@ type testFuncDtoBravo03 struct {
 
 func (tFuncBravo03 *testFuncDtoBravo03) tx3TryAnything(
 	returnError bool,
-	ePrefix *erPref.ErrPrefixDto) error {
+	ePrefDto *erPref.ErrPrefixDto) error {
 
-	if ePrefix == nil {
-		ePrefix = erPref.ErrPrefixDto{}.Ptr()
-	} else {
-		ePrefix = ePrefix.CopyPtr()
+	ePrefix,
+		err := erPref.ErrPrefixDto{}.NewFromErrPrefDto(
+		ePrefDto,
+		"testFuncDtoBravo03.tx3TryAnything()",
+		"")
+
+	if err != nil {
+		return err
 	}
-
-	ePrefix.SetEPref(
-		"testFuncDtoBravo03." +
-			"tx3TryAnything()")
 
 	tFuncBravo04 := testFuncDtoBravo04{}
 
-	err := tFuncBravo04.tx4TryDoingNothing(
+	err = tFuncBravo04.tx4TryDoingNothing(
 		returnError,
 		ePrefix)
 
@@ -109,23 +110,23 @@ type testFuncDtoBravo04 struct {
 
 func (tFuncBravo04 *testFuncDtoBravo04) tx4TryDoingNothing(
 	returnError bool,
-	ePrefix *erPref.ErrPrefixDto) error {
+	ePrefDto *erPref.ErrPrefixDto) error {
 
-	if ePrefix == nil {
-		ePrefix = erPref.ErrPrefixDto{}.Ptr()
-	} else {
-		ePrefix = ePrefix.CopyPtr()
+	ePrefix,
+		err := erPref.ErrPrefixDto{}.NewFromErrPrefDto(
+		ePrefDto,
+		"testFuncDtoBravo04.tx4TryDoingNothing()",
+		"")
+
+	if err != nil {
+		return err
 	}
-
-	ePrefix.SetEPref(
-		"testFuncDtoBravo04." +
-			"tx4TryDoingNothing()")
 
 	tFuncBravo05 := testFuncDtoBravo05{}
 
 	ePrefix.SetCtx("A/B==4")
 
-	err := tFuncBravo05.tx5TrySomethingBig(
+	err = tFuncBravo05.tx5TrySomethingBig(
 		returnError,
 		ePrefix)
 
@@ -138,23 +139,23 @@ type testFuncDtoBravo05 struct {
 
 func (tFuncBravo05 *testFuncDtoBravo05) tx5TrySomethingBig(
 	returnError bool,
-	ePrefix *erPref.ErrPrefixDto) error {
+	ePrefDto *erPref.ErrPrefixDto) error {
 
-	if ePrefix == nil {
-		ePrefix = erPref.ErrPrefixDto{}.Ptr()
-	} else {
-		ePrefix = ePrefix.CopyPtr()
+	ePrefix,
+		err := erPref.ErrPrefixDto{}.NewFromErrPrefDto(
+		ePrefDto,
+		"testFuncDtoBravo05.tx5TrySomethingBig()",
+		"")
+
+	if err != nil {
+		return err
 	}
-
-	ePrefix.SetEPref(
-		"testFuncDtoBravo05." +
-			"tx5TrySomethingBig()")
 
 	tFuncBravo06 := testFuncDtoBravo06{}
 
 	ePrefix.SetCtx("A->B")
 
-	err := tFuncBravo06.tx6TryGivingUp(
+	err = tFuncBravo06.tx6TryGivingUp(
 		returnError,
 		ePrefix)
 
@@ -167,19 +168,17 @@ type testFuncDtoBravo06 struct {
 
 func (tFuncY6 *testFuncDtoBravo06) tx6TryGivingUp(
 	returnError bool,
-	ePrefix *erPref.ErrPrefixDto) error {
+	ePrefDto *erPref.ErrPrefixDto) error {
 
-	if ePrefix == nil {
-		ePrefix = erPref.ErrPrefixDto{}.Ptr()
-	} else {
-		ePrefix = ePrefix.CopyPtr()
+	ePrefix,
+		err := erPref.ErrPrefixDto{}.NewFromErrPrefDto(
+		ePrefDto,
+		"testFuncDtoBravo06.tx6TryGivingUp()",
+		"A/B = C B==0")
+
+	if err != nil {
+		return err
 	}
-
-	ePrefix.SetEPref("Tx6GiveUp()")
-
-	ePrefix.SetCtx("A/B = C B==0")
-
-	var err error
 
 	if returnError {
 		err = fmt.Errorf("%v\n"+
