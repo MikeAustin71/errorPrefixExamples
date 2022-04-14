@@ -20,7 +20,7 @@ func main() {
 
 	mt := MainTest{}
 
-	mt.mainTest008()
+	mt.mainTest004()
 }
 
 type MainTest struct {

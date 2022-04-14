@@ -71,7 +71,7 @@ func (tFuncCharlie02 *testFuncDtoCharlie02) Tx2DoMoreStuff(
 
 	return tFuncCharlie03.Tx3DoLessStuff(
 		returnError,
-		ePrefix.XCtx(
+		ePrefix.XCpy(
 			"B->C"))
 }
 
@@ -148,7 +148,7 @@ func (tFuncCharlie05 *testFuncDtoCharlie05) Tx5DoExcitingStuff(
 
 	return tFuncCharlie06.Tx6DoSpaceStuff(
 		returnError,
-		ePrefix.XCtx(
+		ePrefix.XCpy(
 			"X*Y"))
 
 }

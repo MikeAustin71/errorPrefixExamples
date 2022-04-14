@@ -46,7 +46,9 @@ require github.com/MikeAustin71/errpref v1.6.1
 
 ### Import
 
-To use ***errpref***  in your code, you will need to import the software package ***github.com/MikeAustin71/errpref***.
+To use ***errpref***  in your code, you will need to import the software package ***github.com/MikeAustin71/errpref***. 
+
+Note: This example uses an alias for the import package. For information on ***alias*** usage, see [Import in GoLang - GoLang Docs](https://golangdocs.com/import-in-golang)
 
 ```go
 
@@ -68,7 +70,7 @@ If problems are encountered configuring the ***errpref*** package, try the follo
 1. From the command line run: 
 
    ```text
-   go get github.com/MikeAustin71/errpref@v1.7.0 
+   go get github.com/MikeAustin71/errpref@v1.7.1
    
    				or 
    
@@ -111,14 +113,14 @@ The best usage examples are located at:
 
 ### *main.go*
 
-1. First configure ***app/main.go*** to call the desired test function from Type  ***MainTest*** also located in ***app/main.go***. Then configure function ***main()*** to call a specific test like ***MainTest.mainTest001()***, ***MainTest.mainTest002()***, **MainTest.mainTest003()** etc.
+1. First configure ***app/main.go*** to call the desired test function from Type  ***MainTest*** also located in ***app/main.go***. Then configure function ***main()*** to call a specific test like ***MainTest.mainTest001()***, ***MainTest.mainTest002()***, **MainTest.mainTest003()** etc. 
 2. From the command line in directory ***errorPrefixExamples\app***, issue the command **go run main.go**. Test results will then be displayed in the command line interface. 
 
 
 
 ## Version
 
-The latest version of the **errorPrefixExamples** application is Version 1.7.0.  This corresponds to the version number of the latest version of the ***errpref*** software package.
+The latest version of the **errorPrefixExamples** application is ***Version 1.7.1***.  This corresponds to the version number of the latest version of the ***errpref*** software package.
 
 
 

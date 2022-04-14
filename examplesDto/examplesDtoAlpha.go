@@ -130,7 +130,7 @@ func (tFuncAlpha04 *testFuncDtoAlpha04) tx4DoNothing(
 
 	err = tFuncAlpha05.tx5DoSomethingBig(
 		returnError,
-		ePrefix.XCtx("A/B==4"))
+		ePrefix.XCpy("A/B==4"))
 
 	return err
 }
@@ -157,7 +157,7 @@ func (tFuncAlpha05 *testFuncDtoAlpha05) tx5DoSomethingBig(
 
 	err = tFuncAlpha06.tx6GiveUp(
 		returnError,
-		ePrefix.XCtx(
+		ePrefix.XCpy(
 			"A->B"))
 
 	return err

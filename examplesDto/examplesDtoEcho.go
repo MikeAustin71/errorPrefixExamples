@@ -137,7 +137,7 @@ func (tFuncEcho05 *testFuncDtoEcho05) Tx5AssembleTeam(
 
 	return tFuncEcho06.Tx6DoTheWork(
 		returnExampleError,
-		ePrefix.XCtx(
+		ePrefix.XCpy(
 			"A+B+C+D"))
 
 }

@@ -71,7 +71,7 @@ func (tFuncDelta02 *testFuncDtoDelta02) Tx2DoSomeThings(
 
 	return tFuncDelta03.Tx3DoFewerThings(
 		returnError,
-		ePrefix.XCtx(
+		ePrefix.XCpy(
 			"B->C"))
 }
 
@@ -148,7 +148,7 @@ func (tFuncDelta05 *testFuncDtoDelta05) Tx5DoExcitingThings(
 
 	return tFuncDelta06.Tx6DoUnbelievableThings(
 		returnError,
-		ePrefix.XCtx(
+		ePrefix.XCpy(
 			"X*Y"))
 
 }
