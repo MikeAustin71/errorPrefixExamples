@@ -30,7 +30,7 @@ If you have not done so, it is recommended that you first review the source code
 
 ### Setup and Configuration
 
-The **errorPrefixExamples** application is designed to work with [***Go*** Modules](https://golang.org/ref/mod). This application therefore includes a **go.mod** file. A review of the go.mod file, located in the base **errorPrefixExamples** directory, will show the ***errpref*** package configured for the latest version.
+The **errorPrefixExamples** application is designed to work with [***Go*** Modules](https://golang.org/ref/mod). This application therefore includes a **go.mod** file. A review of the **`go.mod file`**, located in the base **errorPrefixExamples** directory, will show the ***errpref*** package configured for the latest version.
 
 ```go
 
@@ -92,7 +92,7 @@ If problems are encountered configuring the ***errpref*** package, try the follo
 
 ### Background
 
-All the test functions are located in ***testFunctions/testFunctionsDto.go*** and ***testFunctions/testFunctionsStrings.go***. They are designed to be called from source code file ***app/main.go***. 
+All the test functions are located in ***testFunctions/testFunctionsDto.go*** and ***testFunctions/testFunctionsStrings.go***. They are designed to be called from the source code file ***app/main.go***.
 
 The best usage examples are located at:
 
@@ -112,7 +112,7 @@ The best usage examples are located at:
 
 ### *main.go*
 
-1. First configure ***app/main.go*** to call the desired test function from Type  ***MainTest*** also located in ***app/main.go***. Then configure function ***main()*** to call a specific test like ***MainTest.mainTest001()***, ***MainTest.mainTest002()***, **MainTest.mainTest003()** etc. 
+1. First, configure ***app/main.go*** to call the desired test function from Type  ***MainTest*** also located in ***app/main.go***. Then configure function ***main()*** to call a specific test like ***MainTest.mainTest001()***, ***MainTest.mainTest002()***, **MainTest.mainTest003()** etc.
 2. From the command line in directory ***errorPrefixExamples\app***, issue the command **go run main.go**. Test results will then be displayed in the command line interface. 
 
 
